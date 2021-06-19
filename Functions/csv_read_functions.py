@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Created on Sun May 23 23:40:55 2021
 
@@ -10,6 +11,7 @@ from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
 import pandas as pd
 import warnings
+import scipy.stats as stats
 
 warnings.filterwarnings("ignore", category=RuntimeWarning) 
 
@@ -37,7 +39,7 @@ def tanh_func(x, n, x_0, m, c):
 def check_surr(array, index):
     while index <= 10000:
         avg_before = np.average(array[(index-1000):index])
-        avg_after = np.average(array[index:(index+1000)])
+        avg_after = np.average(array[index:(index+(10000-index))])
         
         if array[index]-avg_before > 0.5:
             index += 1
@@ -46,6 +48,16 @@ def check_surr(array, index):
         else:
             return index
             break
+        
+def gradient(array, index):
+    
+    avg_after = np.average(np.gradient(array[index:(index+(10000-index))]))
+    print(avg_after)
+    if avg_after >= 25/10000:
+        return None
+    else:
+        return index
+       
 
 x = np.linspace(-120, 40,10000)
 
@@ -58,7 +70,7 @@ while i <= len(file):
         i += 1
         rida = file.iloc[i][22:39]
         rida = rida.to_numpy()
-        #plt.plot(curve_plot_column, rida)
+        
         print(i)
         pop0 = [max(rida), np.median(curve_plot_column), 1, min(rida)]
         popt, pcov = curve_fit(sigmoid_func, curve_plot_column, rida, pop0)
@@ -66,7 +78,7 @@ while i <= len(file):
         popt_tanh, pcov_tanh = curve_fit(tanh_func, curve_plot_column, rida, pop1, maxfev = 2000)
         y = sigmoid_func(x, *popt)
         y_tanh = tanh_func(x, *popt_tanh)
-        #plt.scatter(curve_plot_column, rida)
+        
         data = plt.plot(x, y)
         data_tanh = plt.plot(x, y_tanh)
         plt.close()
@@ -75,9 +87,7 @@ while i <= len(file):
         es_y_tanh = np.gradient(y_tanh)
         te_y_tanh = np.gradient(np.gradient(y_tanh))
         
-        #plt.plot(x, y)
-        #plt.plot(x, te_y)
-        #plt.axis([-120, 40, -10, 200])
+        
         
         data_source = data[0].get_data()
         x_data_source = data_source[0]
@@ -106,14 +116,14 @@ while i <= len(file):
         #print(y_data_source[index2])
         index2 = check_surr(y_data_source, index2)
         
+        index2 = gradient(y_data_source, index2)
+        
+        if index2 == None:
+            continue
+        
         index2_tanh = np.where((es_y_tanh < 0.1) & (te_y_tanh < 0.0001) & (y_tanh >= np.max(rida)-30) | (y_tanh >= np.max(rida)))[0][0]
         index2_tanh = check_surr(y_data_source_tanh, index2_tanh)
-        #print(y_data_source[index2])    
-        #index3 = np.where((es_y < 0.1) & (te_y < 0.0001) & (y <= np.min(rida)+15) | (y <= np.min(rida)))[0][-1]
-        #print(index3)  
-        #index3 = check_surr(y_data_source, index3)
-        #print(index3)
-        #if y_data_source[index3] - min(rida)  > 5:
+        
         
         
         plt.scatter(x_data_source[index2], y_data_source[index2], c = "green")
@@ -124,57 +134,19 @@ while i <= len(file):
         plt.figure(figsize = (15,15))
         plt.show()
              
-            # j += 1
+           
         
                 
     except IndexError:
         continue
         
-    if max(rida) - y_data_source[index2] > 5 and rida[-1]-rida[-2]>1 :
-            upper_shelf.append(curve_plot_column[-1])
-            upper_shelf.append(rida[-1])
-                        
-    if max(rida) - y_data_source[index2] > 5 and rida[-1]-rida[-2]<=1:
-        if rida[-2]-rida[-3] <=1:
-            if rida[-3]-rida[-4] <=1:
-                if rida[-4]-rida[-5] <=1:
-                    upper_shelf.append(curve_plot_column[-5])
-                    upper_shelf.append(rida[-5])
-                    
-                upper_shelf.append(curve_plot_column[-4])
-                upper_shelf.append(rida[-4])
-             
-            upper_shelf.append(curve_plot_column[-3])    
-            upper_shelf.append(rida[-3])
             
-        upper_shelf.append(curve_plot_column[-2])
-        upper_shelf.append(rida[-2])
         
-    if max(rida) - y_data_source_tanh[index2_tanh] > 5 and rida[-1]-rida[-2]>1 :
-            upper_shelf_tanh.append(curve_plot_column[-1])
-            upper_shelf_tanh.append(rida[-1])
-                        
-    if max(rida) - y_data_source_tanh[index2_tanh] > 5 and rida[-1]-rida[-2]<=1:
-        if rida[-2]-rida[-3] <=1:
-            if rida[-3]-rida[-4] <=1:
-                if rida[-4]-rida[-5] <=1:
-                    upper_shelf_tanh.append(curve_plot_column[-5])
-                    upper_shelf_tanh.append(rida[-5])
-                    
-                upper_shelf_tanh.append(curve_plot_column[-4])
-                upper_shelf_tanh.append(rida[-4])
-             
-            upper_shelf_tanh.append(curve_plot_column[-3])    
-            upper_shelf_tanh.append(rida[-3])
-            
-        upper_shelf_tanh.append(curve_plot_column[-2])
-        upper_shelf_tanh.append(rida[-2])                   
-        
-    else:
-        upper_shelf.append(x_data_source[index2])
-        upper_shelf.append(y_data_source[index2])
-        upper_shelf_tanh.append(x_data_source_tanh[index2_tanh])
-        upper_shelf_tanh.append(y_data_source_tanh[index2_tanh])
+   
+    upper_shelf.append(x_data_source[index2])
+    upper_shelf.append(y_data_source[index2])
+    upper_shelf_tanh.append(x_data_source_tanh[index2_tanh])
+    upper_shelf_tanh.append(y_data_source_tanh[index2_tanh])
         
         
     transition_points = list(transition_points)
@@ -190,5 +162,5 @@ while i <= len(file):
     
     database.loc[i]=listike 
 
-#print(j)
-database.to_csv(r"C:\Users\Enn\Documents\CDT projekt\Progre\TransitionPointsNEW3.csv", index = False)
+
+database.to_csv(r"C:\Users\Enn\Documents\CDT projekt\Progre\TransitionPointsNEW4.csv", index = False)
