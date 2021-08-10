@@ -56,9 +56,7 @@ def read(folder_paths, folder_names, file_name):
                                 data = data[columns]
                                 for name in folder_names:
                                    if name in root:
-                                       if name == "-80,-70,-60":
-                                           data = data.iloc[::5,:]
-                                       
+                                                                           
                                        data_index_list = [[name], [folder], list(data.columns)]
                                        data_indeces = pd.MultiIndex.from_product(data_index_list, names = ["Model", "Composition", "Prediction"])
                                        data.columns = data_indeces
