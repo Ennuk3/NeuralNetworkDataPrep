@@ -36,6 +36,6 @@ def plot_sig_func(folder_list, folder_path_list, sig_data_frame):
         ax.set_xticklabels(index_list[j], fontsize = 15)    
         
         
-        plt.savefig(r"C:\Users\Enn\Documents\CDT projekt\Progre\Test_Images\\" + folder + ".png", dpi = 500)    
+        plt.savefig(r".\Plots\Significances\\" + folder + ".png", dpi = 500)    
         plt.show()
         j += 1
