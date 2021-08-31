@@ -1,3 +1,12 @@
+import numpy as np
+from scipy.optimize import curve_fit
+from matplotlib import pyplot as plt
+import pandas as pd
+
+from Functions import tanh_func
+from Functions import check_surr
+from Functions import gradient
+
 def upper_shelf_func(file, curve_plot_column, database):
     i = -1
     while i <= len(file):
