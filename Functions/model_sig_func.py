@@ -1,3 +1,8 @@
+import os
+import pandas as pd
+
+from Functions import folder_name_func
+
 def model_sig_func(dirpath, filename, index_list, folder_list):
     con_file = os.path.join(dirpath, filename)
     csv = pd.read_csv(con_file, delimiter = r"\s+")
