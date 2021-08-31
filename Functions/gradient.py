@@ -1,3 +1,5 @@
+import numpy as np
+
 def gradient(array, index):
     
     avg_after = np.average(np.gradient(array[index:(index+(10000-index))]))
