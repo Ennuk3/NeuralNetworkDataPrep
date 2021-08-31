@@ -1,0 +1,16 @@
+Low Ti, Low B, Low Al, Low N;28;5;20;55
+Low Ti, Low B, Low Al, High N;28;5;20;200
+Low Ti, Low B, High Al, Low N;28;5;300;55
+Low Ti, High B, Low Al, Low N;28;150;20;55
+Low Ti, Low B, High Al, High N;28;5;300;200
+Low Ti, High B, High Al, Low N;28;150;300;55
+Low Ti, High B, Low Al, High N;28;150;20;200
+Low Ti, High B, High Al, High N;28;150;300;200
+High Ti, Low B, Low Al, Low N;250;5;20;55
+High Ti, Low B, Low Al, High N;250;5;20;200
+High Ti, Low B, High Al, Low N;250;5;300;55
+High Ti, High B, Low Al, Low N;250;150;20;55
+High Ti, Low B, High Al, High N;250;5;300;200
+High Ti, High B, High Al, Low N;250;150;300;55
+High Ti, High B, Low Al, High N;250;150;20;200
+High Ti, High B, High Al, High N;250;150;300;200
