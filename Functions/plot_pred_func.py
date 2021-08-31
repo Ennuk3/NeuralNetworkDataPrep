@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+
 def plot_pred_func(dataframe, columns, path):
     model_list = sorted(set(list(dataframe.columns.get_level_values("Model"))))
     comp_list = list(set(list(dataframe.columns.get_level_values("Composition"))))
