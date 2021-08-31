@@ -1,0 +1,10 @@
+set term postscript portrait enh mono "Times Roman" 16
+set out "temp.plot"
+set pointsize 2
+set xlabel "Temperature (C)"
+set ylabel "Charpy Energy (J)"
+set title "Full Charpy Curve predictions - High Ti, High B, High Al, High N"
+set ls 1 lt 1 lw 1 pt 4 ps 1
+set out "CurveT5.ps" 
+set size 1,0.6
+plot "result_FullCurve_Comp_144204638.16" using 17:18:19:20 title "" with yerr ls 1
