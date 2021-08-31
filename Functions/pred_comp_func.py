@@ -1,3 +1,5 @@
+import pandas as pd
+
 def pred_comp_func(src_file, ref_file, path):
     i = 0
     
