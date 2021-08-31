@@ -1,3 +1,9 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import math
+
+from Functions import sig_data_func
+
 def plot_sig_func(folder_list, folder_path_list, sig_data_frame):
 
     j = 0
