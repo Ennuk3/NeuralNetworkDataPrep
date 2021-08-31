@@ -1,3 +1,6 @@
+import pandas as pd
+import os
+
 def read(folder_paths, folder_names, file_name):
     full_dataframe = pd.DataFrame()
     
@@ -49,7 +52,6 @@ def read(folder_paths, folder_names, file_name):
                                    if name in root:
                                                                               
                                        data_index_list = [[name], [folder], list(data.columns)]
-                                       #print(data_index_list)
                                        data_indeces = pd.MultiIndex.from_product(data_index_list, names = ["Model", "Composition", "Prediction"])
                                        data.columns = data_indeces
                                        
