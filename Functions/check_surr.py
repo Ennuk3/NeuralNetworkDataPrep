@@ -1,3 +1,5 @@
+import numpy as np
+
 def check_surr(array, index):
     while index <= 10000:
         avg_before = np.average(array[(index-1000):index])
