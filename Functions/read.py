@@ -2,6 +2,27 @@ import pandas as pd
 import os
 
 def read(folder_paths, folder_names, file_name):
+    """
+    This function reads in the predictions for each model and every compositional profile available for that model
+    and produces a single multi-index DataFrame that can be conveniently perused and selectively used to plot desired datasets.
+    
+    Parameters
+    ----------
+    folder_paths : list
+        list of all of the paths for every folder (or model)
+    folder_names : list
+        list of all of the folder (or model) names
+    file_name : str
+        the filename that the function looks for to match and then add to the DataFrame
+        
+    Returns
+    -------
+    full_dataframe : DataFrame
+        a multi-index DataFrame that contains the full predictions for each model and each compositional profile that was used as an input to this function
+    columns : list
+        list of column names for future reference
+    """
+    
     full_dataframe = pd.DataFrame()
     
     for element in folder_paths:
