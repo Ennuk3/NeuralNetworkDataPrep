@@ -9,6 +9,14 @@ from Functions import check_surr
 from Functions import gradient
 from Functions import upper_shelf_func
 
+"""
+This example:
+1. reads in a raw CSV file, 
+2. fits a tanh curve to the raw data, 
+3. calculates the inflection and upper shelf start point for each fitted tanh curve (see upper_shelf_func for more details),
+4. returns these values as a CSV file for future use.
+"""
+
 warnings.filterwarnings("ignore", category=RuntimeWarning) 
 
 dirpath = r".\Example Databases\Full Charpy Curves\Full_database_MicroAlloying.csv"
