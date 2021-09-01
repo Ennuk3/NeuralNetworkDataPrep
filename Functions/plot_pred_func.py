@@ -2,6 +2,27 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 def plot_pred_func(dataframe, columns, path):
+    """
+    This function uses the multi-index array of all of the models as an input and returns comparison plots of full Charpy curves between all of the input models.
+    
+    Parameters
+    ----------
+    dataframe : DataFrame
+        multi-index DataFrame consisting of all of the models and compositional profiles
+    columns : list
+        column names for the individual datapoints
+    path : str
+        directory path to save the plots
+        
+    Returns
+    -------
+    model_list : list
+        list of all of the models
+    comp_list : list 
+        list of all of the compositional profiles
+    pred_list : list
+        list of all of the predicted variables
+    """
     model_list = sorted(set(list(dataframe.columns.get_level_values("Model"))))
     comp_list = list(set(list(dataframe.columns.get_level_values("Composition"))))
     pred_list = columns 
