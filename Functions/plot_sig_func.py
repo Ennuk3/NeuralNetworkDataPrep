@@ -5,13 +5,28 @@ import math
 from Functions import sig_data_func
 
 def plot_sig_func(folder_list, folder_path_list, sig_data_frame):
-
+    """
+    This function uses the multi-index array of all of the individual significance values for each submodel and compiles them into an averaged bar plot.
+    
+    Parameters
+    ----------
+    folder_list : list
+        list of the folder (or model) names
+    folder_path_list : list
+        list of the paths for all of the respective folders
+    sig_data_frame : DataFrame
+        a multi-index DataFrame containing all of the significance values for each submodel for every chosen neural network model
+        
+    Returns
+    -------
+    No returns from the function directly, but saves all of the plots for every model in a specified directory (needs to be altered within the code).
+    """
     j = 0
     index_list = sig_data_func(folder_path_list, folder_list)[1]
     
+    #Slices the original DataFrame so that each significance values for each neural network model can be averaged for the plot.
     for folder in folder_list:
-        
-            
+                    
         mean_list = []
         for index in index_list[j]:
             
@@ -35,7 +50,7 @@ def plot_sig_func(folder_list, folder_path_list, sig_data_frame):
         ax.set_xticks(x)
         ax.set_xticklabels(index_list[j], fontsize = 15)    
         
-        
+        #Change this path to your desired path.
         plt.savefig(r".\Plots\Significances\\" + folder + ".png", dpi = 500)    
         plt.show()
         j += 1
