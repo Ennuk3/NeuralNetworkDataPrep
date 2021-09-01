@@ -7,6 +7,25 @@ from Functions import model_sig_func
 from Functions import rename_func
 
 def sig_data_func(folder_path_list, folder_list):
+    """
+    This function compiles several lists from other functions and combines them into a single, easy-to-handle multi-index DataFrame.
+    Used for the significance values of neural network models.
+    
+    Parameters
+    ----------
+    folder_path_list : list
+        list of all of the folder (or model) paths
+    folder_list : list
+        list of all of the folder (or model) names
+    
+    Returns
+    -------
+    sig_data : DataFrame
+        DataFrame of all of the significance values for each submodel of every model
+    index_list : list
+        list of all of the submodels
+    """
+    
     sig_data = pd.DataFrame()
     index_list = []
     for path in folder_path_list:
