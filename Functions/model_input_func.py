@@ -1,4 +1,19 @@
 def model_input_func(path):
+    """
+    This function creates a list of folders and their respective paths to produce sanitized data and plots for comparison.
+    
+    Parameters
+    ----------
+    path : str
+        initial path of all the models
+    
+    Returns
+    -------
+    folder_list : list
+        list of all the folder (or model) names
+    folder_path_list : list
+        list of all the paths for each model
+    """
     i = 1
     folder_path_list = []
     folder_list = []
