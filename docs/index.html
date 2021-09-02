@@ -8,8 +8,10 @@
     <h1>NeuroMat Data Processing</h1>
     <p>Prepares data for neural network analysis using the NeuroMat software, which is a collection of scripts written by Thomas Sourmail and Sree Harsha, based on the Bayesian optimization algorithm written by David McKay.
       <br><br>All data used in this repository was obtained from Glyn Evans.
-      <br><br><h2>Aims</h2>
-      <br><br>This repository contains code to:<br>
+    </p>
+    <p>
+      <h2>Aims</h2>
+      This repository contains code to:<br><br>
       <ol>
         <li>Fit a tanh curve to real data (Charpy toughness data) and based on that determine the inflection point (aka transition point in materials science) and the upper shelf start point (USSP) of the curve.</li>
         <li>Automatically create profiles for predictions based on a reference file (otherwise manual for NeuroMat).</li>
@@ -17,8 +19,53 @@
         <li>Plot the predictions of different models, but the same compositional profiles onto the same plot.</li>
         <li>Find the significance values for each submodel of the committee used to predict the results and condense them into a single multi-index DataFrame.</li>
         <li>Plot the average significances of each input variable for every specified model.</li>
-      </ol>
-    
+      </ol><br><br>
     </p>
+    <p>
+      <h3>Background</h3>
+      The purpose of a neural network is to find a mathematical relationship between the input variables (chemical composition) and the output variable(s) (Charpy energy or temperature). 
+      The neural network used in this work involves 2 layers of neurons to compute the relationships between the input variables and how they affect the output variable. 
+      The chosen inputs are fed into the first layer of neurons.<br><br>
+      
+      This first layer is called the hidden layer, where the output of that layer is defined by a sum of non-linear functions (hyperbolic tangent in this case) using the inputs and the computed weights for each input as the argument and produces a set of hidden units (or nodes) for the next layer. 
+      The complexity of the model is independent of the input parameters, but rather depends on the number of hidden units. 
+      The second layer, called the output layer, provides a linear combination of the hidden units along with a weight for each unit plus a constant (similar to linear regression models), which defines the final relationship of the target (Charpy energy or temperature) relative to the input variables (chemical composition). 
+      The final model is the architecture of the network in combination with the network weights and uncertainties within the weights.<br><br>
+  
+      A neural network is trained to optimize the weights (how much each input variable affects the output) by minimizing an error function (measuring how close the output is to the target) by continuously evaluating the gradient of the error function and feeding it through the network backwards to obtain the target value based on the output. 
+      In this case, a regularization term is also added to the error function to minimize overfitting by preferring smaller weight values.<br><br>
+  
+      Overfitting is also mitigated by dividing the dataset into a training and test set. 
+      This allows for the model to be balanced between fitting the data and generalizing the output function. 
+      The model is produced with the training data and the test data is used to see if the model behaves accurately with unseen data by minimizing the error (offers the best generalization). 
+      Often times the lowest error is provided by combining several models into a committee with the lowest total error. 
+      The prediction obtained from the committee is an average of all the predictions of each model in the committee. 
+      Then, the committee is retrained to further optimize the weights of the committee. 
+      Each model provides a significance value for each input variable, i.e. how much variation the input variable influences in the target variable. 
+      However, a committee does not provide individual values for the significances. 
+      The true nature of the effect of each input variable can be determined by predicting a single variable across a range.<br><br>
+  
+      The neural network software used in this case employs Bayesian statistics, which is an interpretation of probability, where the probability of a variable measures uncertainty rather than a frequency. 
+      All of the possible weights and regularisation constants are optimized using Bayesian inference, meaning that the values obtained for the final prediction (output) are the most probable values and the range of probabilities for a single value constitute the error bars. 
+      This means that the model or committee output is not determined strictly by the frequency of inputs producing a single optimized value, but by the relative certainty that the inputs are within a computed range. 
+      Therefore, the error bars increase in size for sparse or noisy data (as there is less certainty) and decrease for dense or clean data.<br><br>
+  
+      The data included 16 compositional parameters (C, Mn, Si, S, P, Ti, B, Al, N, O, Cr, Ni, Mo, V, Cu, Nb) and full Charpy energy values in the range of -120 to 40 C in increments of 10 C. 
+      To determine the upper shelf and transition points, a tanh function was fitted over the original data. 
+      A tanh function was chosen due to its widespread use in fitting Charpy curves.<br><br>
+  
+      The curves were plotted using 10000 points from a range of -120 to 40 C for increased precision in determining the desired points. 
+      The transition points were taken as the point where the first derivative of the tanh curve reaches a maximum and the second derivative of the tanh curve approaches 0. 
+      Upper shelf start points were found using a gradient minimizing function on the fitted tanh curves. 
+      The function chose a point to the right of the transition point (to make sure the upper shelf and not the lower shelf point was determined) and then took an average of the 1000 values before and after this point (or however many points were left in the curve). 
+      The function then compared the value of the initial point to the average of the previous 1000 values of the initial point and if there was a difference greater than 0.5 Joules between these two values, then the next point, moving to the right, was chosen. 
+      The same was done with the following 1000 values and the initial point. 
+      If for both cases the difference between the values was less than 0.5 Joules (or a total difference of less than 1 Joule), then that was the point chosen to represent the upper shelf start point for the specified composition. 
+      An average of 1000 points or 1/10 of the entire curve was deemed to be necessary to capture the plateau on both sides of the chosen upper shelf start point that is qualititavely defined as the upper shelf of a tanh curve.<br><br>
+  
+    </p>
+
+      
+    
   </body>
 </html>
