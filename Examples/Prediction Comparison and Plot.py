@@ -4,7 +4,7 @@ from Functions import plot_pred_func
 
 """
 This example:
-1. creates a multi-index DataFrame of all of the compositional profiles for every model,
+1. creates a multi-index DataFrame from the predictions of all of the compositional profiles for every model,
 2. saves the DataFrame as a CSV file,
 3. plots all of the same compositional profiles of every model on the same plot for visual comparison.
 """
