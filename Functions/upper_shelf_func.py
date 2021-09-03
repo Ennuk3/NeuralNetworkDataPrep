@@ -34,7 +34,7 @@ def upper_shelf_func(file, curve_plot_column, database, x):
     while i <= len(file):
         try:
             i += 1
-            row = file.iloc[i][16:32] #Change these columns according to the source csv
+            row = file.iloc[i][16:33] #Change these columns according to the source csv
             row = row.to_numpy()
             
             comp = file.iloc[i][0:15] #Change these columns according to the source csv
