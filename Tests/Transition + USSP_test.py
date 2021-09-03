@@ -19,7 +19,7 @@ This example:
 
 warnings.filterwarnings("ignore", category=RuntimeWarning) 
 
-dirpath = r"./Example Databases/Full Charpy Curves/Full_database_MicroAlloying.csv"
+dirpath = r"./Example Databases/Full Charpy Curves/Full_MicroAlloying.csv"
 
 file_real = pd.read_csv(dirpath, delimiter = ";")
 
