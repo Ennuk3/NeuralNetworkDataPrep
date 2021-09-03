@@ -3,6 +3,7 @@ from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
 import pandas as pd
 import warnings
+import pytest
 
 from Functions import tanh_func
 from Functions import check_surr
