@@ -37,11 +37,13 @@ def test_empty_raw_data():
 
 column = file_real.columns.tolist()
 
-curve_column = column[16:32] #Change these columns according to the source csv
+curve_column = column[16:33] #Change these columns according to the source csv
 
 def test_curve_column_int():
     i = -1
     for element in curve_column:
+        with pytest.raises(ValueError):
+            element = int(element)
         if type(element) is int:
             i = 1
         else:
