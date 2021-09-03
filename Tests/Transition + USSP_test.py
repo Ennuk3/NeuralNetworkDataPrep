@@ -23,8 +23,16 @@ dirpath = r"./Example Databases/Full Charpy Curves/Full_MicroAlloying.csv"
 file_real = pd.read_csv(dirpath, delimiter = ";")
 
 def test_empty_raw_data():
-  i = np.where(pd.isna(file_real))[0]
-  assert i == [], "The raw data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
+    i = pd.isna(file_real)
+
+    for element in i.values:
+        if element[0] == True:
+            i = 1
+            break
+        else:
+            i = 0
+
+    assert i == 0, "The raw data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
   
 
 column = file_real.columns.tolist()
@@ -49,5 +57,13 @@ database_real = pd.DataFrame(columns = columns_list)
 final_database = upper_shelf_func.upper_shelf_func(file_real, curve_plot_column_real, database_real, x)
 
 def test_empty_final_data():
-  i = np.where(pd.isna(final_database))[0]
-  assert i == [], "The processed data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
+  i = pd.isna(final_database)
+  
+   for element in i.values:
+        if element[0] == True:
+            i = 1
+            break
+        else:
+            i = 0
+  
+  assert i == 0, "The processed data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
