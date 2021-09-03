@@ -41,7 +41,7 @@ def upper_shelf_func(file, curve_plot_column, database):
             pop1 = [max(row), np.median(curve_plot_column), 1, min(row)]
     
             #Fit the curve according to the tanh_func.
-            popt_tanh, pcov_tanh = curve_fit(tanh_func, curve_plot_column, row, pop1, maxfev = 2000)
+            popt_tanh, pcov_tanh = curve_fit.curve_fit(tanh_func, curve_plot_column, row, pop1, maxfev = 2000)
             
             y_tanh = tanh_func.tanh_func(x, *popt_tanh)
             
