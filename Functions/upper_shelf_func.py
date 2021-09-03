@@ -43,7 +43,7 @@ def upper_shelf_func(file, curve_plot_column, database):
             #Fit the curve according to the tanh_func.
             popt_tanh, pcov_tanh = curve_fit(tanh_func, curve_plot_column, row, pop1, maxfev = 2000)
             
-            y_tanh = tanh_func(x, *popt_tanh)
+            y_tanh = tanh_func.tanh_func(x, *popt_tanh)
             
             data_tanh = plt.plot(x, y_tanh)
             plt.close()
@@ -66,9 +66,9 @@ def upper_shelf_func(file, curve_plot_column, database):
                               
             #Initial upper shelf start point approximation, see check_surr and gradient for more details.
             index2_tanh = np.where((es_y_tanh < 0.1) & (te_y_tanh < 0.0001) & (y_tanh >= np.max(row)-30) | (y_tanh >= np.max(row)))[0][0]
-            index2_tanh = check_surr(y_data_source_tanh, index2_tanh)
+            index2_tanh = check_surr.check_surr(y_data_source_tanh, index2_tanh)
             
-            index2_tanh = gradient(y_data_source_tanh, index2_tanh)
+            index2_tanh = gradient.gradient(y_data_source_tanh, index2_tanh)
             
             if index2_tanh == None:
                 continue
