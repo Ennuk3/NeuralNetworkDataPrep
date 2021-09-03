@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "./style.css">
+    <title>check_surr.py</title>
+  </head>
+  <body>
+    <h2>check_surr</h2>
+    <pre>
+    This function finds the first instance of a minimal gradient within the upper end of a Charpy curve.
+    This is acheived by calculating the difference between the chosen point (index) and the average of the 1000 points before and after the chosen point.
+    If the point is not within a range of 1 between both points, then the next point is selected by increasing the index by 1.
+    
+    Parameters
+    ----------
+    array : tuple
+        input Charpy data, based on which the initial curve is plotted
+    index : int
+        the index value at which the gradient minimizing function is chosen to begin based on parameters in previous code 
+        (must be further than the transition point, otherwise the function does not work properly)
+        
+    Returns
+    -------
+    index : int
+        returns the index at which the gradient of the function is deemed to first reach a defined minimum
+    </pre>
+  </body>
+</html>
