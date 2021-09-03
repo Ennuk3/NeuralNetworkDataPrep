@@ -14,7 +14,6 @@ This example:
 1. reads in a raw CSV file, 
 2. fits a tanh curve to the raw data, 
 3. calculates the inflection and upper shelf start point for each fitted tanh curve (see upper_shelf_func for more details),
-4. returns these values as a CSV file for future use.
 """
 
 warnings.filterwarnings("ignore", category=RuntimeWarning) 
@@ -48,8 +47,6 @@ columns_list = np.concatenate([columns_comp,columns_result])
 database_real = pd.DataFrame(columns = columns_list)
     
 final_database = upper_shelf_func.upper_shelf_func(file_real, curve_plot_column_real, database_real, x)
-
-final_database.to_csv(r"./../Intermediate databases/UpperTJ+TranTJ_Micro.csv", index = False)
 
 def test_empty_final_data():
   i = np.where(pd.isna(final_database))[0]
