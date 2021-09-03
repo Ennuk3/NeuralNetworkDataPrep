@@ -7,7 +7,7 @@ from Functions import tanh_func
 from Functions import check_surr
 from Functions import gradient
 
-def upper_shelf_func(file, curve_plot_column, database):
+def upper_shelf_func(file, curve_plot_column, database, x):
     """
     This function reads in the raw CSV files and fits a Charpy curve (based on a sigmoid, tanh function) to the data. 
     From there, it identifies the inflection point (or transition point in materials science) and the upper shelf start point.
@@ -22,10 +22,12 @@ def upper_shelf_func(file, curve_plot_column, database):
         list of column names for the curve plots
     database : DataFrame
         empty DataFrame for the function to fill up with all of the appropriate points
-        
+    x : numpy.ndarray
+        defines the linear space in which the plotting and curve fitting will occur
     Returns
     -------
-    
+    database : DataFrame
+        DataFrame containing all the transition and USS points for every Charpy curve
     """
     
     i = -1
