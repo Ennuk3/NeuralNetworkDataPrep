@@ -47,7 +47,7 @@ columns_list = np.concatenate([columns_comp,columns_result])
 
 database_real = pd.DataFrame(columns = columns_list)
     
-final_database = upper_shelf_func.upper_shelf_func(file_real, curve_plot_column_real, database_real)
+final_database = upper_shelf_func.upper_shelf_func(file_real, curve_plot_column_real, database_real, x)
 
 final_database.to_csv(r"./Intermediate Databases/UpperTJ+TranTJ_Micro.csv", index = False)
 
