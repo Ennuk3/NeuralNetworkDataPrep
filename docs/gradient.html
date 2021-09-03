@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "./style.css">
+    <title>gradient.py</title>
+  </head>
+  <body>
+    <h2>gradient</h2>
+    <p>
+    This function checks whether the calculated upper shelf start point is too close to the upper end of the temperature scale.<br>
+    If the gradient between the calculated index and the end point of the Charpy curve is greater than or equal to 0.025, then the upper shelf point is not valid.<br><br>
+        
+    Parameters<br>
+    ----------<br>
+    <b>array</b> : tuple<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        input Charpy data, based on which the initial curve is plotted<br>
+    <b>index</b> : int<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        the calculated upper shelf start point<br>
+        <br>
+        
+    Returns<br>
+    -------<br>
+    <b>None</b> : NoneType<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        if the upper shelf start point does not meet the specified requirements, nothing is returned<br>
+    <b>index</b> : int<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        the same index value as the input index value
+    </p>
+  </body>
+</html>
