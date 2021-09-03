@@ -19,7 +19,7 @@ This example:
 
 warnings.filterwarnings("ignore", category=RuntimeWarning) 
 
-dirpath = r".\..\Example Databases\Full Charpy Curves\Full_database_MicroAlloying.csv"
+dirpath = r".\Test files\Full_database_MicroAlloying.csv"
 
 file_real = pd.read_csv(dirpath, delimiter = ";")
 
@@ -49,7 +49,7 @@ database_real = pd.DataFrame(columns = columns_list)
     
 final_database = upper_shelf_func(file_real, curve_plot_column_real, database_real)
 
-final_database.to_csv(r".\..\Intermediate databases\UpperTJ+TranTJ_Micro.csv", index = False)
+final_database.to_csv(r".\Result files\UpperTJ+TranTJ_Micro.csv", index = False)
 
 def test_empty_final_data():
   i = np.where(pd.isna(final_database))[0]
