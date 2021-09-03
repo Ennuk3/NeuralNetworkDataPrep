@@ -39,6 +39,17 @@ column = file_real.columns.tolist()
 
 curve_column = column[17:34] #Change these columns according to the source csv
 
+def test_curve_column_int():
+    i = -1
+    for element in curve_column:
+        if type(element) is int:
+            i = 1
+        else:
+            i = 0
+            break
+
+    assert i != 0, "Wrong columns have been selected for the Charpy curve data, check the raw data and the entered column indeces."
+
 curve_plot_column_real = []
 
 for element in curve_column:
