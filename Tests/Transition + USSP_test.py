@@ -24,7 +24,7 @@ file_real = pd.read_csv(dirpath, delimiter = ";")
 
 def test_empty_raw_data():
   i = np.where(pd.isna(file_real))[0]
-  assert i != [], "The raw data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
+  assert i == [], "The raw data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
   
 
 column = file_real.columns.tolist()
@@ -50,4 +50,4 @@ final_database = upper_shelf_func.upper_shelf_func(file_real, curve_plot_column_
 
 def test_empty_final_data():
   i = np.where(pd.isna(final_database))[0]
-  assert i != [], "The processed data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
+  assert i == [], "The processed data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
