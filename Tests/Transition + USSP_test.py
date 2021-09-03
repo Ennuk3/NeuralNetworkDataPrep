@@ -42,8 +42,9 @@ curve_column = column[16:33] #Change these columns according to the source csv
 
 def test_curve_column_int():
     i = -1
-    element = int(element)
+    
     for element in curve_column:
+        element = int(element)
         if type(element) is int:
             i = 1
         else:
