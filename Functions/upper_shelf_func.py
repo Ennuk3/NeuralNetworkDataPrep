@@ -34,10 +34,10 @@ def upper_shelf_func(file, curve_plot_column, database, x):
     while i <= len(file):
         try:
             i += 1
-            row = file.iloc[i][17:34] #Change these columns according to the source csv
+            row = file.iloc[i][16:32] #Change these columns according to the source csv
             row = row.to_numpy()
             
-            comp = file.iloc[i][0:16] #Change these columns according to the source csv
+            comp = file.iloc[i][0:15] #Change these columns according to the source csv
             comp = comp.to_numpy()
   
             pop1 = [max(row), np.median(curve_plot_column), 1, min(row)]
