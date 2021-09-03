@@ -6,7 +6,7 @@ from Functions import plot_sig_func
 This example:
 1. creates a list of models that are received as input,
 2. creates a multi-index DataFrame for the significance values of each submodel within every model committee,
-3. plots the averages of every submodel.
+3. plots the averages for every input variable of every submodel.
 """
 
 path_real = r".\Example significance files\\"
