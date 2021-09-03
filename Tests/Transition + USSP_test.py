@@ -59,11 +59,11 @@ final_database = upper_shelf_func.upper_shelf_func(file_real, curve_plot_column_
 def test_empty_final_data():
   i = pd.isna(final_database)
   
-   for element in i.values:
-        if element[0] == True:
-            i = 1
-            break
-        else:
-            i = 0
+  for element in i.values:
+       if element[0] == True:
+           i = 1
+           break
+       else:
+           i = 0
   
   assert i == 0, "The processed data contains empty cells. Please remove all empty cells, otherwise NeuroMat will not give valid results."
