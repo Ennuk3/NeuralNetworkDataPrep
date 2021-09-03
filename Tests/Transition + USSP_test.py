@@ -37,7 +37,7 @@ def test_empty_raw_data():
 
 column = file_real.columns.tolist()
 
-curve_column = column[17:34] #Change these columns according to the source csv
+curve_column = column[16:32] #Change these columns according to the source csv
 
 def test_curve_column_int():
     i = -1
@@ -57,7 +57,7 @@ for element in curve_column:
     
 x = np.linspace(-120, 40,10000)
 
-columns_comp = column[0:16]
+columns_comp = column[0:15]
 
 columns_result = ["TransitionT", "TransitionJ", "UpperT", "UpperJ"]
 
