@@ -9,18 +9,16 @@
     <p>
     This function finds the first instance of a minimal gradient within the upper end of a Charpy curve.<br>
     This is acheived by calculating the difference between the chosen point (index) and the average of the 1000 points before and after the chosen point.<br>
-    If the point is not within a range of 1 between both points, then the next point is selected by increasing the index by 1.<br><br>
+    If the point is not within a range of 1 between both points, then the next point is selected by increasing the index by 1.
     
-    Parameters<br>
-    ----------<br>
+    <h5>Parameters<br>-------------</h5>
     <b>array</b> : tuple<br>&nbsp;&nbsp;&nbsp;&nbsp;
         input Charpy data, based on which the initial curve is plotted<br>
     <b>index</b> : int<br>&nbsp;&nbsp;&nbsp;&nbsp;
         the index value at which the gradient minimizing function is chosen to begin based on parameters in previous code<br>&nbsp;&nbsp;&nbsp;&nbsp;
-        (must be further than the transition point, otherwise the function does not work properly)<br><br>
+        (must be further than the transition point, otherwise the function does not work properly)
         
-    Returns<br>
-    -------<br>
+    <h5>Returns<br>---------</h5>
     <b>index</b> : int<br>&nbsp;&nbsp;&nbsp;&nbsp;
         returns the index at which the gradient of the function is deemed to first reach a defined minimum
     </p>
