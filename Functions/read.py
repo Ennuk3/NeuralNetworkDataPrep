@@ -28,17 +28,13 @@ def read(folder_paths, folder_names, file_name, nr_of_columns):
     full_dataframe = pd.DataFrame()
     
     for element in folder_paths:
-        i = 0
-        assert i != 0, "oh my godsies!"
+        
         for root, directories, files in os.walk(element):
-            i = 0
-            assert i != 0, "oh my god!"
+            
             for file in files:
-                i = 0
-                assert i != 0, "oh yes!"
+                
                 if file == file_name:
-                    i = 0
-                    assert i != 0, "oh no!"
+                    
                     directory_list = directories
                     if directories != []:
                                                 
