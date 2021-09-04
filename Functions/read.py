@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-def read(folder_paths, folder_names, file_name):
+def read(folder_paths, folder_names, file_name, nr_of_columns):
     """
     This function reads in the predictions for each model and every compositional profile available for that model
     and produces a single multi-index DataFrame that can be conveniently perused and selectively used to plot desired datasets.
@@ -14,6 +14,8 @@ def read(folder_paths, folder_names, file_name):
         list of all of the folder (or model) names
     file_name : str
         the filename that the function looks for to match and then add to the DataFrame
+    nr_of_columns : int
+        number of columns to include for the compositional profile analysis (depends on specific use case, default is 4)
         
     Returns
     -------
@@ -39,7 +41,7 @@ def read(folder_paths, folder_names, file_name):
                         data = pd.read_csv(str(element+file), sep = " ")
                         
                         #The next line is made for a 4-column data unit within every compositional profile, change the number for more or less.
-                        data = data[data.columns[-4:]]
+                        data = data[data.columns[-nr_of_columns:]]
                         #Changes a specific value of a column for the sake of consistency (depends on the specific databases used).
                         data.columns.values[0] = "Temp"
                         #Changes the error bars from absolute values to relative values (matplotlib cannot plot properly otherwise).
@@ -68,7 +70,7 @@ def read(folder_paths, folder_names, file_name):
                                 data = pd.read_csv(str(element + folder + "\\" + file), sep = " ")
                                 
                                 #The next line is made for a 4-column data unit within every compositional profile, change the number for more or less.
-                                data = data[data.columns[-4:]]
+                                data = data[data.columns[-nr_of_columns:]]
                                 #Changes a specific value of a column for the sake of consistency (depends on the specific databases used).
                                 data.columns.values[0] = "Temp"
                                 #Changes the error bars from absolute values to relative values (matplotlib cannot plot properly otherwise).
