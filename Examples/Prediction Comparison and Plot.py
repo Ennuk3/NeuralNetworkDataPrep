@@ -1,6 +1,7 @@
 from Functions import model_input_func
 from Functions import read
 from Functions import plot_pred_func
+from Functions import model_input_func
 
 """
 This example:
