@@ -8,10 +8,9 @@
     <h2>read_func</h2>
     <p>
     This function reads in the predictions for each model and every compositional profile available for that model and produces a single multi-index DataFrame that can be conveniently perused and selectively used to plot desired datasets.
-    <br><br>
+    
         
-    Parameters<br>
-    ----------<br>
+    <h5>Parameters<br>-------------</h5>
     <b>folder_paths</b> : list<br>&nbsp;&nbsp;&nbsp;&nbsp;
         list of all of the paths for every folder (or model)<br>
     <b>folder_names</b> : list<br>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -20,10 +19,9 @@
         the filename that the function looks for to match and then add to the DataFrame<br>
     <b>nr_of_columns</b> : int<br>&nbsp;&nbsp;&nbsp;&nbsp;
         number of columns to include for the compositional profile analysis (depends on specific use case, default is 4)<br>
-        <br>
         
-    Returns<br>
-    -------<br>
+        
+    <h5>Parameters<br>-------------</h5>
     <b>full_dataframe </b> : DataFrame<br>&nbsp;&nbsp;&nbsp;&nbsp;
         a multi-index DataFrame that contains the full predictions for each model and each compositional profile that was used as an input to this function<br>
     <b>columns</b> : list<br>&nbsp;&nbsp;&nbsp;&nbsp;
