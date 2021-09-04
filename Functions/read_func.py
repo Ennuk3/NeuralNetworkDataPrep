@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-def read(folder_paths, folder_names, file_name, nr_of_columns):
+def read_func(folder_paths, folder_names, file_name, nr_of_columns):
     """
     This function reads in the predictions for each model and every compositional profile available for that model
     and produces a single multi-index DataFrame that can be conveniently perused and selectively used to plot desired datasets.
