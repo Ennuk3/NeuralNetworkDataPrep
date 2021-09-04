@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "./style.css">
+    <title>pred_comp_func.py</title>
+  </head>
+  <body>
+    <h2>pred_comp_func</h2>
+    <p>
+    This function creates compositional profile files for the neural network predictor program in an automated fashion.<br>
+    <br>
+        
+    Parameters<br>
+    ----------<br>
+    <b>src_file</b> : DataFrame<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        DataFrame of the original profile file, necessary for the original structure<br>
+    <b>ref_file</b> : DataFrame<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        DataFrame of the desired compositional profiles<br>
+    <b>path </b> : str<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        save directory<br>
+        <br>
+        
+    Returns<br>
+    -------<br>
+    Nothing directly from the function, however it creates as many compositional profiles as are written within the reference file. 
+    This function is written for a very specific compositional profile. 
+    For more general use, the index values for both the source and the reference file need to be changed appropriately.
+    </p>
+  </body>
+</html>
