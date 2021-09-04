@@ -32,7 +32,8 @@ def read(folder_paths, folder_names, file_name, nr_of_columns):
         for root, directories, files in os.walk(element):
             
             for file in files:
-                
+                i = 0
+                assert i != 0, "oh yes!"
                 if file == file_name:
                     i = 0
                     assert i != 0, "oh no!"
