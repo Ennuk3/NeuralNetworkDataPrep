@@ -45,7 +45,7 @@ def plot_pred_func(dataframe, columns, path):
             plt.errorbar(dataframe[model][comp_list[i]][pred_list[0]], dataframe[model][comp_list[i]][pred_list[1]], yerr = errorlist, ls = "none", capsize = 6, elinewidth = 1, color = color_list[j])
             j += 1
         
-        plt.savefig(path" + str(comp_list[i]) + ".png", dpi = 500)
+        plt.savefig("path" + str(comp_list[i]) + ".png", dpi = 500)
         plt.show()
         
        
