@@ -37,8 +37,12 @@ def read(folder_paths, folder_names, file_name):
                     if directories != []:
                                                 
                         data = pd.read_csv(str(element+file), sep = " ")
+                        
+                        #The next line is made for a 4-column data unit within every compositional profile, change the number for more or less.
                         data = data[data.columns[-4:]]
+                        #Changes a specific value of a column for the sake of consistency (depends on the specific databases used).
                         data.columns.values[0] = "Temp"
+                        #Changes the error bars from absolute values to relative values (matplotlib cannot plot properly otherwise).
                         data.iloc[:, 2] = abs(data.iloc[:, 2] - data.iloc[:, 1])
                         data.iloc[:, 3] = abs(data.iloc[:, 3] - data.iloc[:, 1])
                         columns = data.columns.tolist()
@@ -62,8 +66,12 @@ def read(folder_paths, folder_names, file_name):
                             if folder == root[root.rindex("\\")+1:]:
                                                                                                    
                                 data = pd.read_csv(str(element + folder + "\\" + file), sep = " ")
+                                
+                                #The next line is made for a 4-column data unit within every compositional profile, change the number for more or less.
                                 data = data[data.columns[-4:]]
+                                #Changes a specific value of a column for the sake of consistency (depends on the specific databases used).
                                 data.columns.values[0] = "Temp"
+                                #Changes the error bars from absolute values to relative values (matplotlib cannot plot properly otherwise).
                                 data.iloc[:, 2] = abs(data.iloc[:, 2] - data.iloc[:, 1])
                                 data.iloc[:, 3] = abs(data.iloc[:, 3] - data.iloc[:, 1])
                                 columns = data.columns.tolist()
