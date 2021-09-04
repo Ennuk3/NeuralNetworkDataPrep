@@ -34,7 +34,8 @@ def read(folder_paths, folder_names, file_name, nr_of_columns):
             for file in files:
                 
                 if file == file_name:
-                    
+                    i = 0
+                    assert i != 0, "oh no!"
                     directory_list = directories
                     if directories != []:
                                                 
