@@ -1,0 +1,31 @@
+  
+<!doctype html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "./style.css">
+    <title>upper_shelf_func.py</title>
+  </head>
+  <body>
+    <h2>upper_shelf_func</h2>
+    <p>
+    This function reads in the raw CSV files and fits a Charpy curve (based on a sigmoid, tanh function) to the data. 
+    From there, it identifies the inflection point (or transition point in materials science) and the upper shelf start point.
+    The upper shelf start point is the first point in the tanh curve, where curve plateaus by a specified amount on the upper end. (see check_surr for more detail).
+    Then it adds all of the points (energy and temperature) into a single DataFrame and then saves it as CSV file for future processing.
+        
+    <h5>Parameters<br>-------------</h5>
+    <b>file</b> : DataFrame<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        raw CSV data<br>
+    <b>curve_plot_column</b> : list<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        list of column names for the curve plots<br>
+    <b>database</b> : DataFrame<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        empty DataFrame for the function to fill up with all of the appropriate points<br>
+    <b>x</b> : numpy.ndarray<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        defines the linear space in which the plotting and curve fitting will occur
+        
+    <h5>Returns<br>---------</h5>
+    <b>database</b> : DataFrame<br>&nbsp;&nbsp;&nbsp;&nbsp;
+        DataFrame containing all the transition and USS points for every Charpy curve
+    </p>
+  </body>
+</html>
