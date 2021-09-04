@@ -18,7 +18,7 @@ filename = "CurveT.txt"
 
 column_nr = 4
 
-full_data, pred_list = read(folder_paths, folder_names, filename, column_nr)[0], read(folder_paths, folder_names, filename, column_nr)[1]
+full_data, pred_list = read.read(folder_paths, folder_names, filename, column_nr)[0], read.read(folder_paths, folder_names, filename, column_nr)[1]
 
 
 def test_column_nr():
