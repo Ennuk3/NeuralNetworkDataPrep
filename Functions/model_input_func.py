@@ -19,9 +19,9 @@ def model_input_func(path):
     folder_list = []
     folder_nr = int(input("How many folders? "))
     which_script = int(input("Signficances (1) or Model Comparison (2)? "))
-    if which_script = 1:
+    if which_script == 1:
         file_addition = r"\files\c\\"
-    if which_script = 2:
+    if which_script == 2:
         file_addition = r"\\"
     while i <= folder_nr:
         folder = input("Folder name? ")
