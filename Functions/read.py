@@ -30,7 +30,8 @@ def read(folder_paths, folder_names, file_name, nr_of_columns):
     for element in folder_paths:
         
         for root, directories, files in os.walk(element):
-            
+            i = 0
+            assert i != 0, "oh my god!"
             for file in files:
                 i = 0
                 assert i != 0, "oh yes!"
